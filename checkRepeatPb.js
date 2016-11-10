@@ -2,7 +2,7 @@
 
 var pageRegex = /<pb id="([^<>]+)"/g;
 var pageIdStore = {};
-var pattern = process.argv[2];
+//var pattern = process.argv[2];
 //console.log(pattern);
 //process.exit(1);
 
@@ -10,27 +10,30 @@ var Path = require('path');
 var glob = require('glob');
 var fs = require('fs');
 
-var routes = glob.sync(pattern, {nosort: true});
+module.exports = function checkRepeatPb(pattern) {
 
-var files = routes.map((route) => {
-  let fileName = Path.basename(route);
-  let text = fs.readFileSync(route, 'utf8');
+  var routes = glob.sync(pattern, {nosort: true});
 
-  return {'fileName': fileName, 'text': text};
-});
+  var files = routes.map((route) => {
+    let fileName = Path.basename(route);
+    let text = fs.readFileSync(route, 'utf8');
 
-function alertReteatPage(file, i) {
-  file.text.replace(pageRegex, function(m, m1) {
-    var storedId = pageIdStore[m1];
-    var fileName = file.fileName;
-
-    if (!storedId) {
-      pageIdStore[m1] = fileName;
-    }
-    else {
-      console.log(m1, storedId, fileName);
-    }
+    return {'fileName': fileName, 'text': text};
   });
-}
 
-files.map(alertReteatPage);
+  function alertReteatPage(file, i) {
+    file.text.replace(pageRegex, function(m, m1) {
+      var storedId = pageIdStore[m1];
+      var fileName = file.fileName;
+
+      if (!storedId) {
+        pageIdStore[m1] = fileName;
+      }
+      else {
+        console.log(m1, storedId, fileName);
+      }
+    });
+  }
+
+  files.map(alertReteatPage);
+};
