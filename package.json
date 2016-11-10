@@ -1,0 +1,25 @@
+{
+  "name": "check-repeat-pb",
+  "version": "0.0.0",
+  "description": "",
+  "main": "repeatPb.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "check-repeat-pb": "./checkRepeatPb.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karmapa/checkRepeatPb.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karmapa/checkRepeatPb/issues"
+  },
+  "homepage": "https://github.com/karmapa/checkRepeatPb#readme",
+  "dependencies": {
+    "glob": "^7.1.1"
+  }
+}
