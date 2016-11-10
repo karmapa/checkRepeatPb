@@ -1,3 +1,5 @@
+#!usr/local/bin/node
+
 var pageRegex = /<pb id="([^<>]+)"/g;
 var pageIdStore = {};
 var pattern = process.argv[2];
