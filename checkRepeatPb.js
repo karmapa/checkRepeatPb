@@ -30,7 +30,7 @@ module.exports = function checkRepeatPb(pattern) {
         pageIdStore[m1] = fileName;
       }
       else {
-        console.log(m1, storedId, fileName);
+        throw new Error(m1 + ' ' + storedId + ' ' + fileName);
       }
     });
   }
