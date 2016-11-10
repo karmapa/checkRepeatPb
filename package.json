@@ -1,6 +1,6 @@
 {
   "name": "check-repeat-pb",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "checkRepeatPb.js",
   "scripts": {
