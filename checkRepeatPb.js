@@ -1,5 +1,5 @@
 var pageRegex = /<pb id="([^<>]+)"/g;
-var jpRegex = /<jp id="([^<>]+)"/
+var jpRegex = /<jp id="([^<>]+)"/g;
 var pageIdStore = {};
 var jpIdStore = {};
 //var pattern = process.argv[2];
