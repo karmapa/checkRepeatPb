@@ -1,7 +1,7 @@
-
-
 var pageRegex = /<pb id="([^<>]+)"/g;
+var jpRegex = /<jp id="([^<>]+)"/
 var pageIdStore = {};
+var jpIdStore = {};
 //var pattern = process.argv[2];
 //console.log(pattern);
 //process.exit(1);
@@ -28,6 +28,18 @@ module.exports = function checkRepeatPb(pattern) {
 
       if (!storedId) {
         pageIdStore[m1] = fileName;
+      }
+      else {
+        throw new Error(m1 + ' ' + storedId + ' ' + fileName);
+      }
+    });
+
+    file.text.replace(jpRegex, function(m, m1) {
+      var storedId = jpIdStore[m1];
+      var fileName = file.fileName;
+
+      if (!storedId) {
+        jpIdStore[m1] = fileName;
       }
       else {
         throw new Error(m1 + ' ' + storedId + ' ' + fileName);
